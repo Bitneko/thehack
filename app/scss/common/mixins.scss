@@ -1,0 +1,114 @@
+/* Mixins */
+
+@mixin border-radius($radius) {
+    -moz-border-radius: $radius;
+    -webkit-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin innershadow($hor-offset, $ver-offset, $blur, $spread, $color) {
+    -moz-box-shadow: inset $hor-offset $ver-offset $blur $spread $color;
+    -webkit-box-shadow: inset $hor-offset $ver-offset $blur $spread $color;
+    box-shadow: inset $hor-offset $ver-offset $blur $spread $color;
+}
+
+@mixin placeholder {
+    &.placeholder { @content; }
+    &:-moz-placeholder { @content; }
+    &::-moz-placeholder { @content; }
+    &::-webkit-input-placeholder { @content; }
+}
+
+@mixin rotate {
+    -webkit-transform: rotate(10deg);
+    -moz-transform: rotate(10deg);
+    -ms-transform: rotate(10deg);
+    -o-transform: rotate(10deg);
+    transform: rotate(10deg);
+}
+
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@mixin font-size($size, $unit) {
+    @if $unit == rem {
+        font-size: ($size)+px;
+        font-size: ($size/10)+rem;
+    } @else if $unit == em {
+        font-size: ($size/10)+em;
+    } @else if $unit == px {
+        font-size: ($size)+px;
+    }
+}
+
+@function calc-em($target, $context) {
+    @return $target / $context * 1em;
+}
+
+@mixin normalise-list() {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+@mixin sprite($x, $y, $width, $height, $bgcolor: transparent) {
+    background: $bgcolor url('../images/sprite.png') no-repeat $x $y;
+    width: $width;
+    height: $height;
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
+        background-image: url('../images/sprite-hd.png');
+        background-size: 1250px 750px;
+    }
+}
+
+@mixin clearfix() {
+    zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+
+    &:before,
+    &:after {
+      content: '';
+      display: table;
+    } 
+
+    &:after { clear: both; }
+}
+
+@mixin transition($type, $duration, $easing) {
+    transition-property: $type;
+    transition-duration: $duration;
+    transition-timing-function: $easing;
+    /* Safari */
+    -webkit-backface-visibility: hidden;
+    -webkit-transition-property: $type;
+    -webkit-transition-duration: $duration;
+    -webkit-transition-timing-function: $easing;
+}
+
+@mixin inline-block() {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+}
+
+@mixin linear-gradient ($color1, $color2) {
+    background: -webkit-linear-gradient($color1, $color2);
+    background: -o-linear-gradient($color1, $color2);
+    background: -moz-linear-gradient($color1, $color2);
+    background: linear-gradient($color1, $color2);
+}
+
+@mixin box-shadow($horizontal-offset, $vertical-offset, $blur, $spread, $color) {
+       -moz-box-shadow: $horizontal-offset $vertical-offset $blur $spread $color;
+    -webkit-box-shadow: $horizontal-offset $vertical-offset $blur $spread $color;
+            box-shadow: $horizontal-offset $vertical-offset $blur $spread $color;
+}
+

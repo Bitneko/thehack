@@ -5,11 +5,16 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'router'
-], function($, _, Backbone, Router){
+    'router',
+    'app/views/main/controlView'
+], function($, _, Backbone, Router, ControlView){
     'use strict';
     var initialize = function(){
         console.log('App module iniialized');
+
+        var controlView = new ControlView();
+
+        controlView.render();
 
         // Pass in our Router module and call it's initialize function
         Router.initialize();
