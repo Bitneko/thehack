@@ -10,7 +10,7 @@ define([
 ], function($, _, Backbone, Router, ControlView){
     'use strict';
     var initialize = function(){
-        console.log('App module iniialized');
+        console.log('App module initialized');
 
         var controlView = new ControlView();
 

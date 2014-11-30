@@ -1,9 +1,32 @@
+<div class = "image">
+	<img src = "/img/<%= secret.ImageURL %>.jpg"/>
+</div>
 <div class = "card card-false">
-	<h2 class = "heading">Sa Lah!(Oops!)</h2>
+	<h2 class = "heading">Awesome</h2>
+	<p class = "highlight"><%= secret.Title %></p>
 
-	<span class = "truth-counter">342</span>
+	<div class = "conclusion">- This is not a true secret</div>
 
-	<p>other people thought this was true! Wah lao eh!</p>
+	<div class = "statistic">
+		<span class = "percent"><%= per %>%</span>
+		<span>also got this right!</span>
+	</div>
+	<div class = "desc">
+		<p>The truth:</p>
+		<p><%= secret.Explanation %></p>
+	</div>
+
+	<div class = "quick-profile">
+		<span class = "title">Secret by</span>
+
+		<div class = "thumbnail">
+			<img src = "/img/<%= secret.AuthorImage %>.png" alt = ""/>
+		</div>
+
+		<div class = "name"><%= secret.Author %></div>
+		<div class = "status"><span class = "type"></span> <span class = "oracle">Oracle</span> <img src = "/img/oracle-secret-page.png" class = "icon icon-oracle"/></div>
+
+	</div>
 
 	<div class = "quick-share">
 		<a href = "#">

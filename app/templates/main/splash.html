@@ -1,12 +1,12 @@
-<div class = "splash">
+<div class = "splash" style = "background-image: url('/img/<%=secret.ImageBG %>.jpg')">
 	<div class = "content">
 		<p>
 			<%= secret.Title %>
 		</p>
 		<div class = "actions">
 			<p>
-				<a href = "/truth/<%= secret.Id %>" class="btn btn-default">Truth</a>
-				<a href = "/false/<%= secret.Id %>" class="btn btn-default">False</a>
+				<a href = "/#/false/<%= secret.Id %>" class="btn btn-default btn-lie">Lie</a>
+				<a href = "/#/truth/<%= secret.Id %>" class="btn btn-default btn-truth">Truth</a>
 			</p>
 		</div>
 	</div>

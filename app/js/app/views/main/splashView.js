@@ -9,9 +9,10 @@ define([
     'text!templates/main/splash.html',
     'app/models/secretModel',
     'app/collections/secretCollection',
+    'hammer',
     'jquery-ui',
     'jquery.ui.touch-punch'
-], function($, _, Backbone, SplashViewTemplate, SecretModel, SecretCollection){
+], function($, _, Backbone, SplashViewTemplate, SecretModel, SecretCollection, Hammer){
     'use strict';
 
     var length;
@@ -19,7 +20,7 @@ define([
     var loadScreen = function(id){
         var $screen = $('.load-screen'),
             direction = 'reset',
-            threshold = 200,
+            threshold = 100,
             id = id;
 
         $screen.draggable({ 
@@ -30,7 +31,7 @@ define([
                 if(offset > threshold/2) {
                     $('#app')
                         .removeClass()
-                        .addClass('green');
+                        .addClass('magenta');
                 } else if(offset < (-1 * threshold/2)){
                     $('#app')
                         .removeClass()
@@ -46,18 +47,19 @@ define([
                     } else {
                         id = length - 1;
                     }
-
-                    window.location.href = '/secret/' + id;
+                    $screen.animate({'left': $(window).width()});
+                    window.location.href = '/#/secret/' + id;
                     
                 } else if(offset < (-1 * threshold)){
                     id++;
                     if(id > length - 1) {
                         id = 0;
                     }
-                    window.location.href = '/secret/' + id;
+                    $screen.animate({'left': -$(window).width()});
+                    window.location.href = '/#/secret/' + id;
+                } else {
+                    $screen.animate({'left': '0'});
                 }
-
-                $screen.animate({'left': '0'});
             }
         });
     };
@@ -72,6 +74,9 @@ define([
             var secretCollection = new SecretCollection();
 
             secretCollection.fetch({
+                data: { 
+                    bust: (new Date()).getTime()
+                },
                 success: function(e) {
 
                     length = e.models.length;
@@ -85,8 +90,12 @@ define([
 
                     var compiledTemplate = _.template(SplashViewTemplate)(data);
 
+                    $("#cards").empty();
+
                     $("#loadScreen")
                         .hide()
+                        .stop()
+                        .css({'left': 0})
                         .html( compiledTemplate )
                         .fadeIn(function(){
                             loadScreen(id);

@@ -5,7 +5,6 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    //'app/views/dummy/venueList',
     'app/views/main/splashView',
     'app/views/main/truthView',
     'app/views/main/falseView'
@@ -17,8 +16,8 @@ define([
             'dummy'         : 'listVenue',
             ''              : 'secret',
             'secret/:id'    : 'secret',
-            'truth'         : 'truth',
-            'false'         : 'false',
+            'truth/:id'     : 'truth',
+            'false/:id'     : 'false',
             // Default
             '*actions'      : 'defaultAction'
         }
@@ -28,15 +27,6 @@ define([
         console.log('Router module initialized');
 
         var app_router = new AppRouter();
-
-        /**
-         * List Venues (Dummy Test)
-         */
-        // app_router.on('route:listVenue', function(){
-        //     var venueList = new VenueList();
-
-        //     venueList.render();
-        // });
 
         /**
          * Default action
@@ -51,7 +41,7 @@ define([
          */
         app_router.on('route:secret', function(id){
             if(id === null) {
-                id = 0
+                id = 0;
             }
 
             var splashView = new SplashView();
@@ -60,19 +50,19 @@ define([
         });
 
 
-        app_router.on('route:truth', function(actions){
+        app_router.on('route:truth', function(id){
             var truthView = new TruthView();
 
-            truthView.render();
+            truthView.render(id);
         });
 
-        app_router.on('route:false', function(actions){
+        app_router.on('route:false', function(id){
             var falseView = new FalseView();
 
-            falseView.render();
+            falseView.render(id);
         });
 
-        Backbone.history.start({pushState: true});
+        Backbone.history.start({pushState: false});
 
         return app_router;
    };

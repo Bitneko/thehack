@@ -1,21 +1,38 @@
-<div class = "card card-truth">
-	<h2 class = "heading">Truth</h2>
-	<p class = "highlight">When viewing the Marina Bay Sands building from the right angle, it looks like a massive phallus.</p>
-	<div class = "desc">
-		<p>Donec pulvinar dignissim justo quis mattis. Integer ac placerat elit. Donec et dolor porttitor, vestibulum ante quis, rhoncus nisl.</p>
+<div class = "image">
+	<img src = "/img/<%= secret.ImageURL %>.jpg"/>
+</div>
 
-		<p>Vestibulum facilisis semper sem ut elementum.</p>
+<div class = "card card-truth">
+	<h2 class = "heading">Awesome</h2>
+	<p class = "highlight"><%= secret.Title %></p>
+
+	<div class = "conclusion">- This is a true secret</div>
+
+	<div class = "statistic">
+		<span class = "percent"><%= per %>%</span>
+		<span>also got this right!</span>
+	</div>
+	<div class = "desc">
+		<p>The truth:</p>
+		<p><%= secret.Explanation %></p>
 	</div>
 
 	<div class = "quick-profile">
 		<span class = "title">Secret by</span>
 
 		<div class = "thumbnail">
-			<img src = "img/thumbnail.jpg" alt = ""/>
+			<img src = "/img/<%= secret.AuthorImage %>.png" alt = ""/>
 		</div>
 
-		<div class = "name"></div>
-		<div class = "status">Current Oracle <img src = "img/oracle-secret-page.png" class = "icon icon-oracle"/></div>
+		<div class = "name"><%= secret.Author %></div>
+		<div class = "status"><span class = "type"><%= secret.Tags %></span> <span class = "oracle">Oracle</span> <img src = "/img/oracle-secret-page.png" class = "icon icon-oracle"/></div>
 
+	</div>
+
+	<div class = "quick-share">
+		<a href = "#">
+			<i class = "icon icon-share"></i>
+			<span class = "text">Share</span>
+		</a>
 	</div>
 </div>

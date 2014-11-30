@@ -3,9 +3,11 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>The Hack</title>
+        <title>Secret Singapore</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="mobile-web-app-capable" content="yes">
 
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <!-- Place favicon.ico in the root directory -->
@@ -25,7 +27,14 @@
                 <div class = "load-screen" id = "loadScreen"></div>
                 <div class = "control" id = "controls">
             </div>
+
+            <div class = "geo-scanner" id = "geoScanner">
+                <img class="profileImg" src="/img/thumbnail.jpg" />
+                <h1>Uncovering Secret Singapore...</h1>
+            </div>
         </div>
+
+        <div class = "menu" id = "cogMenu"></div>
 
         <script data-main="/js/main" src="/js/libs/require.js"></script>
 

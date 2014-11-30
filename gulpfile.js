@@ -42,6 +42,9 @@ gulp.task('copy', function() {
 
     gulp.src('app/ajax/**/*.json')
         .pipe(gulp.dest('dist/ajax/'));
+
+    gulp.src('app/secretspore/**/*.php')
+        .pipe(gulp.dest('dist/secretspore/'));
 });
 
 gulp.task('scripts', function() {
